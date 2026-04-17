@@ -1,0 +1,84 @@
+class Farmacia {
+
+    String[] nomesMedicamentos = {"Dipirona", "Paracetamol", "Ibuprofeno"};
+    int[] diasParaVencimento = {3, 10, 2};
+    double[] precos = {10.0, 15.0, 20.0};
+
+    // 1. Mostrar medicamentos
+    public void mostrarMedicamentos() {
+        System.out.println("=== Medicamentos ===");
+        for (int i = 0; i < nomesMedicamentos.length; i++) {
+            System.out.println(nomesMedicamentos[i] +
+                    " | Preço: R$" + precos[i] +
+                    " | Vence em: " + diasParaVencimento[i] + " dias");
+        }
+    }
+
+    // 2. Média de vencimento
+    public void mediaVencimento() {
+        int soma = 0;
+        for (int dias : diasParaVencimento) {
+            soma += dias;
+        }
+        double media = (double) soma / diasParaVencimento.length;
+        System.out.println("Média de dias para vencimento: " + media);
+    }
+
+    // 3. Próximos de vencer
+    public void verificarVencimento() {
+        System.out.println("=== Próximos do vencimento ===");
+        for (int i = 0; i < diasParaVencimento.length; i++) {
+            if (diasParaVencimento[i] < 5) {
+                System.out.println(nomesMedicamentos[i]);
+            }
+        }
+    }
+
+    // 4. Aplicar desconto
+    public void aplicarDesconto() {
+        for (int i = 0; i < diasParaVencimento.length; i++) {
+            if (diasParaVencimento[i] < 5) {
+                precos[i] = precos[i] * 0.5;
+            }
+        }
+    }
+
+    // 5. Vender medicamento (remover)
+    public void venderMedicamento(String nome) {
+        for (int i = 0; i < nomesMedicamentos.length; i++) {
+            if (nomesMedicamentos[i].equalsIgnoreCase(nome)) {
+
+                System.out.println("Vendido: " + nomesMedicamentos[i]);
+
+                nomesMedicamentos[i] = null;
+                diasParaVencimento[i] = 0;
+                precos[i] = 0;
+
+                return;
+            }
+        }
+        System.out.println("Medicamento não encontrado!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Farmacia farmacia = new Farmacia();
+
+        farmacia.mostrarMedicamentos();
+        farmacia.mediaVencimento();
+
+        farmacia.verificarVencimento();
+
+        farmacia.aplicarDesconto();
+
+        System.out.println("\nApós desconto:");
+        farmacia.mostrarMedicamentos();
+
+        farmacia.venderMedicamento("Dipirona");
+
+        System.out.println("\nApós venda:");
+        farmacia.mostrarMedicamentos();
+    }
+}
