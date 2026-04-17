@@ -1,0 +1,54 @@
+class Aluno {
+    private String nome;
+    private int matricula;
+    private double notaFinal;
+
+    // Getters
+    public String getNome() {
+        return nome;
+    }
+
+    public int getMatricula() {
+        return matricula;
+    }
+
+    public double getNotaFinal() {
+        return notaFinal;
+    }
+
+    // Setters
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setMatricula(int matricula) {
+        this.matricula = matricula;
+    }
+
+    public void setNotaFinal(double notaFinal) {
+        if (notaFinal >= 0 && notaFinal <= 10) {
+            this.notaFinal = notaFinal;
+        } else {
+            System.out.println("Nota inválida!");
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        
+        Aluno aluno1 = new Aluno();
+
+        
+        aluno1.setNome("Isabella");
+        aluno1.setMatricula(12345);
+        aluno1.setNotaFinal(8.5);
+
+        
+        System.out.println("=== Boletim ===");
+        System.out.println("Nome: " + aluno1.getNome());
+        System.out.println("Matrícula: " + aluno1.getMatricula());
+        System.out.println("Nota Final: " + aluno1.getNotaFinal());
+    }
+}
