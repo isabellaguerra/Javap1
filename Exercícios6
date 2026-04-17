@@ -1,0 +1,24 @@
+class Carro {
+    public String marca;
+    public String modelo;
+    public int ano;
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        // 1. Instanciação
+        Carro carro1 = new Carro();
+
+        // 2. Entrada de dados
+        carro1.marca = "Ford";
+        carro1.modelo = "Ka";
+        carro1.ano = 2022;
+
+        // 3. Relatório
+        System.out.println("=== Veículo Cadastrado ===");
+        System.out.println("Marca: " + carro1.marca);
+        System.out.println("Modelo: " + carro1.modelo);
+        System.out.println("Ano: " + carro1.ano);
+    }
+}
